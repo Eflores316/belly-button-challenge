@@ -48,7 +48,7 @@ function init() {
 .then((data) =>{
 
 selecteddata=data.names;    
-    selecteddatadata.names.forEach((name) => {
+    selecteddata.forEach((name) => {
         dropdownMenu.append("option").text(name).property("value", name);
 });
 

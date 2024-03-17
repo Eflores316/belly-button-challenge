@@ -1,11 +1,9 @@
 // Fetch the JSON data and console log it
 function plotchart(rowitem){
 
-
 d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json")
 .then((data) => {
 
-//console.log(data)
 let sampleArray=data.samples.filter(X=>X.id==rowitem)
 let ids = sampleArray[0].otu_ids 
 let sv = sampleArray[0].sample_values
@@ -45,17 +43,19 @@ Plotly.newPlot("bubble", bubble_data,bubbleLayout);
   });
 }
 function init() {
-    let = d3.select("#selDataset");
+    let dropdownMenu = d3.select("#selDataset");
     d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json")
 .then((data) =>{
 
 selecteddata=data.names;    
-    selecteddatadata.names.forEach((name) => {
-    dropdownMenu.append("option").text(name).property("value", name);
+    selecteddata.forEach((name) => {
+        dropdownMenu.append("option").text(name).property("value", name);
 });
+
 rowitem=selecteddata[0]
 
 plotchart(rowitem)
+buildMetadata(rowitem)
 })
 
 }
